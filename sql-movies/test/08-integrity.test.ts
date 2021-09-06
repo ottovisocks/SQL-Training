@@ -141,13 +141,13 @@ describe("Foreign Keys", () => {
     async done => {
       const movieId = 5915;
       const query = `
-      DELETE FROM ${MOVIES} WHERE id = '${movieId}';
-      DELETE FROM ${MOVIE_RATINGS} WHERE movie_id = '${movieId}';
-      DELETE FROM ${MOVIE_ACTORS} WHERE movie_id = '${movieId}';
-      DELETE FROM ${MOVIE_KEYWORDS} WHERE movie_id = '${movieId}';
-      DELETE FROM ${MOVIE_DIRECTORS} WHERE movie_id = '${movieId}';
-      DELETE FROM ${MOVIE_GENRES} WHERE movie_id = '${movieId}';
-      DELETE FROM ${MOVIE_PRODUCTION_COMPANIES} WHERE movie_id = '${movieId}'
+        DELETE FROM ${MOVIES} WHERE id = '${movieId}';
+        DELETE FROM ${MOVIE_RATINGS} WHERE movie_id = '${movieId}';
+        DELETE FROM ${MOVIE_ACTORS} WHERE movie_id = '${movieId}';
+        DELETE FROM ${MOVIE_KEYWORDS} WHERE movie_id = '${movieId}';
+        DELETE FROM ${MOVIE_DIRECTORS} WHERE movie_id = '${movieId}';
+        DELETE FROM ${MOVIE_GENRES} WHERE movie_id = '${movieId}';
+        DELETE FROM ${MOVIE_PRODUCTION_COMPANIES} WHERE movie_id = '${movieId}'
       `; 
 
       await db.delete(query);
