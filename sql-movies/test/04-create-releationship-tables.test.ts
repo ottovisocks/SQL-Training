@@ -10,15 +10,75 @@ import { Database } from "../src/database";
 import { tableInfo } from "../src/queries/table-info";
 import { minutes, Log } from "./utils";
 
-const CREATE_MOVIE_GENRES_TABLE = ``;
+const CREATE_MOVIE_GENRES_TABLE = `
+  CREATE TABLE movie_genres (
+    movie_id integer not null,
+    genre_id integer not null,
+    primary key(movie_id, genre_id)
+    CONSTRAINT FK_genres
+      FOREIGN KEY (genre_id)
+      REFERENCES genres(id)
+    CONSTRAINT FK_movies
+      FOREIGN KEY (movie_id)
+      REFERENCES movies(id)
+  );
+`;
 
-const CREATE_MOVIE_ACTORS_TABLE = ``;
+const CREATE_MOVIE_ACTORS_TABLE = `
+  CREATE TABLE movie_actors (
+    movie_id integer not null,
+    actor_id integer not null,
+    primary key(movie_id, actor_id)
+    CONSTRAINT FK_actors
+      FOREIGN KEY (actor_id)
+      REFERENCES actors(id)
+    CONSTRAINT FK_movies
+      FOREIGN KEY (movie_id)
+      REFERENCES movies(id)
+  );
+  `;
 
-const CREATE_MOVIE_DIRECTORS_TABLE = ``;
+const CREATE_MOVIE_DIRECTORS_TABLE = `
+  CREATE TABLE movie_directors (
+    movie_id integer not null,
+    director_id integer not null,
+    primary key(movie_id, director_id)
+    CONSTRAINT FK_directors
+      FOREIGN KEY (director_id)
+      REFERENCES directors(id)
+    CONSTRAINT FK_movies
+      FOREIGN KEY (movie_id)
+      REFERENCES movies(id)
+  );
+`;
 
-const CREATE_MOVIE_KEYWORDS_TABLE = ``;
+const CREATE_MOVIE_KEYWORDS_TABLE = `
+  CREATE TABLE movie_keywords (
+    movie_id integer not null,
+    keyword_id integer not null,
+    primary key(movie_id, keyword_id)
+    CONSTRAINT FK_keywords
+      FOREIGN KEY (keyword_id)
+      REFERENCES keywords(id)
+    CONSTRAINT FK_movies
+      FOREIGN KEY (movie_id)
+      REFERENCES movies(id)
+  );
+`;
 
-const CREATE_MOVIE_PRODUCTION_COMPANIES_TABLE = ``;
+const CREATE_MOVIE_PRODUCTION_COMPANIES_TABLE = `
+  CREATE TABLE movie_production_companies (
+    movie_id integer not null,
+    company_id integer not null,
+    primary key(movie_id, company_id)
+    CONSTRAINT FK_production_companies
+      FOREIGN KEY (company_id)
+      REFERENCES production_companies(id)
+    CONSTRAINT FK_movies
+      FOREIGN KEY (movie_id)
+      REFERENCES movies(id)
+  );
+`;
 
 describe("Insert Combined Data", () => {
   let db: Database;
